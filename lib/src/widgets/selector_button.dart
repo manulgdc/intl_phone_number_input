@@ -40,7 +40,8 @@ class SelectorButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return selectorConfig.selectorType == PhoneInputSelectorType.DROPDOWN
         ? countries.isNotEmpty && countries.length > 1
-            ? DropdownButton<Country>(
+            ? DropdownButtonHideUnderline(
+                child: DropdownButton<Country>(
                   key: Key(TestHelper.DropdownButtonKeyValue),
                   dropdownColor: dropdownBackgroundColor,
                   hint: Item(
@@ -54,7 +55,8 @@ class SelectorButton extends StatelessWidget {
                   value: country,
                   items: mapCountryToDropdownItem(countries),
                   onChanged: isEnabled ? onCountryChanged : null,
-                )
+                ),
+              )
             : Item(
                 country: country,
                 showFlag: showFlagsDropdown,
